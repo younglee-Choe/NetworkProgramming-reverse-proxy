@@ -1,0 +1,13 @@
+.Home {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+#main-title {
+    color: aliceblue;
+    font-size: large;
+    position: absolute;
+    top: 10%;
+    left: 7%;
+}
