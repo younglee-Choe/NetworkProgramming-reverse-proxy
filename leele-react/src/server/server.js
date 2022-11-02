@@ -1,23 +1,25 @@
+const express = require('express')
 const https = require('https')
 const fs = require('fs')
+const ejs = require('ejs')
+const path = require('path')
+const router = require('../router/routes')
 
-const port = process.env.PORT || 5000
+const app = express()
+const port = process.env.REACT_APP_PORT || 4041
+
+app.use(express.static(path.join(__dirname, '../../build')))
+app.set('views', __dirname + '../../build')
+app.engine('html', ejs.renderFile)
+app.set('view engine', 'html')
+
+app.use(router)
 
 const options = {
-    key: fs.readFileSync('../../private.pem'),
-    cert: fs.readFileSync('../../public.pem')
+    key: fs.readFileSync('../../../key.pem'),
+    cert: fs.readFileSync('../../../cert.pem')
 }
 
-https.createServer(options, function(req, res) {
-    fs.readFile('../../build/index.html', function(error, data) {
-        if(error){
-            console.log(error)
-        }
-        else{
-            res.writeHead(200)
-            res.end(data)
-        }
-    })
-}).listen(port)
+https.createServer(options, app).listen(port)
 
 console.log(`Server is listening on ${port}`)
