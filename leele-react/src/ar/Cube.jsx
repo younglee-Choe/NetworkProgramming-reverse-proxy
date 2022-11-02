@@ -3,8 +3,8 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import '../css/cube.css'
 
-function test() {
-    window.location.href = '/basic'
+function onclickHandleCube() {
+    window.location.href = '/'
 }
 
 function Cube() {
@@ -15,7 +15,7 @@ function Cube() {
                 <ambientLight intensity={0.5}/>
                 <spotLight position={[10, 15, 10]} angle={0.3}/>
                 <Stars/>
-                <mesh position={[0,0,0]} onClick={test}>
+                <mesh position={[0,0,0]} onClick={onclickHandleCube}>
                     <boxBufferGeometry attatch="geometry" />
                     <meshLambertMaterial attatch="material" color="orange" />
                 </mesh>
