@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const router = express.Router()
 const connection = require('../models/models')
-const API = require('../../views/src/marker-based/axios-instance')
+// const API = require('../../views/src/marker-based/axios-instance')
 
 const index = path.join(__dirname, '../../views/build/index.html')
 const filePath = path.join(__dirname, '../../views/src/marker-based')
@@ -26,7 +26,7 @@ router.get('/api/marker', (req, res) => {
         res.send(result)
         
         data = result
-        API(result)
+        // API(result)
     })
 })
 
