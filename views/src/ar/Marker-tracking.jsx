@@ -11,7 +11,6 @@ function MarkerTracking() {
         axios.get('/marker')
             .then(function(res) {
                 setHtmlCode(res)
-                console.log("RES: ", res)
             })
             .catch(function(err) {
                 console.log(err)
@@ -20,8 +19,7 @@ function MarkerTracking() {
 
     useEffect(() => {
         handleSendFile()
-        console.log("htmlCode ", htmlCode)
-    }, [htmlCode])
+    }, [])
 
     return(
         <div className='marker-container'>
