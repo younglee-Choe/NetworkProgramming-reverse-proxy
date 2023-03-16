@@ -9,7 +9,7 @@ const app = express()
 const port = process.env.REACT_APP_PORT || 4041
 
 app.use(express.static(path.join(__dirname, '../views/build')))
-app.set('views', __dirname + '../views/build')
+app.set('views', path.join(__dirname, '../views/build'))
 app.engine('html', ejs.renderFile)
 app.set('view engine', 'html')
 
